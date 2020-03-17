@@ -1,5 +1,5 @@
 <?php
-namespace PowerBI;
+namespace Beaver\PowerBI;
 
 use GuzzleHttp\Client as Guzzle;
 
@@ -31,9 +31,9 @@ class Client
         $this->__response = json_decode($response->getBody()->getContents(), true);
     }
 
-    public static function generate()
+    public static function generate($id, $secret, $username, $password)
     {
-        $request = new self;
+        $request = new self($id, $secret, $username, $password);
         return $request->token();
     }
 
