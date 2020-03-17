@@ -1,0 +1,28 @@
+{
+    "name": "chrisbeaver/powerbi-php",
+    "description": "PowerBI API Wrapper for PHP",
+    "type": "library",
+    "require": {
+        "php": ">=7.1.0",
+        "guzzlehttp/guzzle": "^6.5",
+        "ext-curl": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Beaver\\PowerBI\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Beaver\\PowerBI": "tests"
+        }
+    },
+    "license": "MIT",
+    "authors": [{
+        "name": "Chris Beaver",
+        "email": "chris@chrisbeaver.net"
+    }]
+}
