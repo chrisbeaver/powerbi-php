@@ -1,5 +1,5 @@
 <?php
-namespace Beaver\PowerBI;
+namespace Beaver\PowerBI\Http;
 
 use GuzzleHttp\Client as Guzzle;
 
@@ -40,5 +40,13 @@ class Client
     public function token()
     {
         return $this->__response['access_token'];
+    }
+
+    /**
+     * Call Methods on the PowerBI\DataSet class.
+     */
+    public function dataSet()
+    {
+        return new DataSet($this->token());
     }
 }
