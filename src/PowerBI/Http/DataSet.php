@@ -2,45 +2,33 @@
 
 namespace Beaver\PowerBI\Http;
 
+use Beaver\PowerBI\Resources\DataSet\DataSet as Database;
+
 class DataSet extends Request
 {
+    protected $__routes;
+
     public function __construct($token)
     {
         parent::__construct($token);
-        $this->__routes = $this->__routes['DataSet'];
+        $this->__routes = $this->__allRoutes['DataSet'];
     }
 
-    public function create()
+    public function create(Database $dataSet)
     {
         $url = $this->__routes['create'];
-        $table = [
-            'name' => 'API Created Table',
-            'tables' => [
-                [
-                    'name' => 'Budget',
-                    'columns' => [
-                        [
-                            'name' => 'Expense',
-                            'dataType' => 'Int64',
-                        ],
-                        [
-                            'name' => 'Chemical',
-                            'dataType' => 'String',
-                        ],
-                    ],
-                ],
-            ],
-        ];
-        return var_dump($this->post($url, $table));
+        return $this->post($url, $dataSet);
     }
 
-    public function get()
+    public function getAll()
     {
-
+        $url = $this->__routes['get'];
+        return $this->get($url);
     }
 
-    public function addRows()
+    public function addRows($dataSetID, $tableName, array $rows)
     {
-
+        $url = sprintf($this->__routes['addRows'], $dataSetID, $tableName);
+        return $this->post($url, $rows);
     }
 }

@@ -11,6 +11,7 @@ class Client
     ];
     private $__url = 'https://login.microsoftonline.com/common/oauth2/token';
     private $__response;
+    private $__dataSet;
 
     public function __construct($client_id, $client_secret, $username, $password)
     {
@@ -47,6 +48,10 @@ class Client
      */
     public function dataSet()
     {
-        return new DataSet($this->token());
+        if ($this->__dataSet) {
+            return $this->__dataSet;
+        }
+        $this->__dataSet = new DataSet($this->token());
+        return $this->__dataSet;
     }
 }
