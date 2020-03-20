@@ -71,7 +71,7 @@ class Request
     }
 
     /**
-     * Submit delete request to server with provided data.
+     * Submit delete request to server.
      *
      * @param  string  $url
      * @return mixed

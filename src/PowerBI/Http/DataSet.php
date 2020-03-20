@@ -6,6 +6,11 @@ use Beaver\PowerBI\Resources\DataSet\DataSet as Database;
 
 class DataSet extends Request
 {
+    /**
+     * The collection of DataSet URLs for making PowerBI API requests.
+     *
+     * @var array
+     */
     protected $__routes;
 
     /**

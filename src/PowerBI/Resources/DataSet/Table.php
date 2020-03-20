@@ -12,7 +12,7 @@ class Table implements \JsonSerializable
     private $__name = '';
 
     /**
-     * Columns of name/type pairs for this table instance.
+     * Columns of ['name'=> 'type'] pairs for this table instance.
      *
      * @var array
      */
