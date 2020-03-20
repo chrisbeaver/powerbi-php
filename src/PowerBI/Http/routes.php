@@ -1,4 +1,8 @@
 <?php
+/**
+ * This is the central location for all routes that the library will
+ * access the API from using the given methods.
+ */
 
 return [
     'DataSet' => [

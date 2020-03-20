@@ -6,9 +6,26 @@ use GuzzleHttp\Client;
 
 class Request
 {
+    /**
+     * The client instance for making HTTP requests.
+     *
+     * @var GuzzleHttp\Client
+     */
     private $__client;
+
+    /**
+     * The collection of URLs for making PowerBI API requests.
+     *
+     * @var array
+     */
     protected $__allRoutes;
 
+    /**
+     * Create a new request instance.
+     *
+     * @param  string  $token
+     * @return void
+     */
     public function __construct($token)
     {
         $headers = [
@@ -19,6 +36,13 @@ class Request
         $this->__client = new Client(['headers' => $headers]);
     }
 
+    /**
+     * Submit post request to server with provided data.
+     *
+     * @param  string  $url
+     * @param  mixed   $data
+     * @return mixed
+     */
     protected function _post($url, $data)
     {
         try {
@@ -30,6 +54,12 @@ class Request
         return json_decode($response->getBody()->getContents(), true);
     }
 
+    /**
+     * Submit get request to server.
+     *
+     * @param  string  $url
+     * @return mixed
+     */
     protected function _get($url)
     {
         try {
@@ -40,6 +70,12 @@ class Request
         return json_decode($response->getBody()->getContents(), true);
     }
 
+    /**
+     * Submit delete request to server with provided data.
+     *
+     * @param  string  $url
+     * @return mixed
+     */
     protected function _delete($url)
     {
         try {

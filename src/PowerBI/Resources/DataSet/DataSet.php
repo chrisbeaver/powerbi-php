@@ -5,39 +5,63 @@ namespace Beaver\PowerBI\Resources\DataSet;
 class DataSet implements \JsonSerializable
 {
     /**
-     * Name of DataSet
+     * The name of the dataset on PowerBI.
+     *
+     * @var string
      */
     private $__name;
 
     /**
-     * Tables to be created/manipulated in DataSet.
+     * Collection of Table objects sthat are in the dataset.
+     *
+     * @var array
      */
     private $__tables = [];
 
+    /**
+     * Create a new dataset instance.
+     *
+     * @param  string  $name
+     * @param  array   $tables
+     * @return void
+     */
     public function __construct($name, $tables = [])
     {
         $this->__name = $name;
         $this->__tables = $tables;
     }
 
-    public function jsonSerialize()
-    {
-        return ['name' => $this->__name, 'tables' => $this->__tables];
-    }
-
-    public static function create($name, $tables = [])
+    /**
+     * Create a new dataset object.
+     *
+     * @param  string  $name
+     * @param  array   $tables
+     * @return static
+     */
+    public static function create($name, array $tables = [])
     {
         return new static($name, $tables);
     }
 
+    /**
+     * Add a table to the dataset instance.
+     *
+     * @param  Table  $table
+     * @return $this
+     */
     public function addTable(Table $table)
     {
         $this->__tables[] = $table;
         return $this;
     }
 
-    // public function json()
-    // {
-    //     return json_encode($table, JSON_PRETTY_PRINT)
-    // }
+    /**
+     * Convert the object into something JSON serializable.
+     *
+     * @return array
+     */
+    public function jsonSerialize()
+    {
+        return ['name' => $this->__name, 'tables' => $this->__tables];
+    }
 }

@@ -5,14 +5,46 @@ use GuzzleHttp\Client as Guzzle;
 
 class Client
 {
+    /**
+     * The headers used for requesting an access token.
+     *
+     * @var array
+     */
     private $__headers = [
         'Content-Type' => 'application/x-www-form-urlencoded',
         'Accept' => 'application/json',
     ];
+
+    /**
+     * The url for submitting a request to get an access key.
+     *
+     * @var string
+     */
     private $__url = 'https://login.microsoftonline.com/common/oauth2/token';
+
+    /**
+     * Cached response from requesting an access token.
+     *
+     * @var string
+     */
     private $__response;
+
+    /**
+     * Cached dataset instance for making request to manipulate a dataset.
+     *
+     * @var DataSet
+     */
     private $__dataSet;
 
+    /**
+     * Create a new Guzzle client instance.
+     *
+     * @param  string  $client_id
+     * @param  string  $client_secret
+     * @param  string  $username
+     * @param  string  $password
+     * @return void
+     */
     public function __construct($client_id, $client_secret, $username, $password)
     {
         $formData = [
@@ -32,19 +64,35 @@ class Client
         $this->__response = json_decode($response->getBody()->getContents(), true);
     }
 
+    /**
+     * Static method to build new instance of Client.
+     *
+     * @param  string  $client_id
+     * @param  string  $client_secret
+     * @param  string  $username
+     * @param  string  $password
+     * @return string
+     */
     public static function generate($id, $secret, $username, $password)
     {
         $request = new self($id, $secret, $username, $password);
         return $request->token();
     }
 
+    /**
+     * Return the access token produced on creating the instance.
+     *
+     * @return string
+     */
     public function token()
     {
         return $this->__response['access_token'];
     }
 
     /**
-     * Call Methods on the PowerBI\DataSet class.
+     * Returns class to chain methods off of for manipulating a dataset.
+     *
+     * @return Beaver\PowerBI\Http\DataSet
      */
     public function dataSet()
     {
