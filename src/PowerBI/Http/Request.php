@@ -19,7 +19,7 @@ class Request
         $this->__client = new Client(['headers' => $headers]);
     }
 
-    public function post($url, $data)
+    protected function _post($url, $data)
     {
         try {
             $response = $this->__client->post($url, ['json' => $data]);
@@ -30,10 +30,20 @@ class Request
         return json_decode($response->getBody()->getContents(), true);
     }
 
-    public function get($url)
+    protected function _get($url)
     {
         try {
             $response = $this->__client->get($url);
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            var_dump($e->getResponse()->getBody()->getContents());
+        }
+        return json_decode($response->getBody()->getContents(), true);
+    }
+
+    protected function _delete($url)
+    {
+        try {
+            $response = $this->__client->delete($url);
         } catch (\GuzzleHttp\Exception\ClientException $e) {
             var_dump($e->getResponse()->getBody()->getContents());
         }

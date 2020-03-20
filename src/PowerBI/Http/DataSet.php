@@ -17,18 +17,24 @@ class DataSet extends Request
     public function create(Database $dataSet)
     {
         $url = $this->__routes['create'];
-        return $this->post($url, $dataSet);
+        return $this->_post($url, $dataSet);
     }
 
-    public function getAll()
+    public function delete($dataSetID)
+    {
+        $url = sprintf($this->__routes['delete'], $dataSetID);
+        return $this->_delete($url);
+    }
+
+    public function get()
     {
         $url = $this->__routes['get'];
-        return $this->get($url);
+        return $this->_get($url);
     }
 
     public function addRows($dataSetID, $tableName, array $rows)
     {
         $url = sprintf($this->__routes['addRows'], $dataSetID, $tableName);
-        return $this->post($url, $rows);
+        return $this->_post($url, $rows);
     }
 }
