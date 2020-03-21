@@ -10,6 +10,7 @@ With the dataset created, we can now create tables to add to it.
 
 ```
 use Beaver\PowerBI\Resources\DataSet\Table;
+use Beaver\PowerBI\Resources\DataSet\Type;
 
 $table1 = Table::create('person')
     ->addColumn('name', Type::STRING)
