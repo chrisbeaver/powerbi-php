@@ -16,12 +16,12 @@ class DataSet extends Request
     /**
      * Create a new dataset request instance.
      *
-     * @param  string  $token
+     * @param  mixed  $tokenOrTestClient
      * @return void
      */
-    public function __construct($token)
+    public function __construct($tokenOrTestClient)
     {
-        parent::__construct($token);
+        parent::__construct($tokenOrTestClient);
         $this->__routes = $this->__allRoutes['DataSet'];
     }
 

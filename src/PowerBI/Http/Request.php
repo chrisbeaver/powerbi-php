@@ -21,19 +21,24 @@ class Request
     protected $__allRoutes;
 
     /**
-     * Create a new request instance.
+     * Create a new request instance. The parameter passed is a token string
+     * or a mocked HTTP Guzzle client.
      *
-     * @param  string  $token
+     * @param  string  $tokenOrTestClient
      * @return void
      */
-    public function __construct($token)
+    public function __construct($tokenOrTestClient)
     {
-        $headers = [
-            'Accept' => 'application/json',
-            'Authorization' => "Bearer $token",
-        ];
-        $this->__allRoutes = require_once 'routes.php';
-        $this->__client = new Client(['headers' => $headers]);
+        if (is_string($tokenOrTestClient)) {
+            $headers = [
+                'Accept' => 'application/json',
+                'Authorization' => "Bearer $tokenOrTestClient",
+            ];
+            $this->__allRoutes = require_once 'routes.php';
+            $this->__client = new Client(['headers' => $headers]);
+        } else {
+            $this->__client = $tokenOrTestClient;
+        }
     }
 
     /**

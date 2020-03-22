@@ -94,12 +94,15 @@ class Client
      *
      * @return Beaver\PowerBI\Http\DataSet
      */
-    public function dataSet()
+    public function dataSet($testingHttpClient = null)
     {
         if ($this->__dataSet) {
             return $this->__dataSet;
         }
-        $this->__dataSet = new DataSet($this->token());
+        $this->__dataSet = $testingHttpClient ?
+        new DataSet($testingHttpClient) :
+        new DataSet($this->token());
+
         return $this->__dataSet;
     }
 }
