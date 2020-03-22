@@ -34,11 +34,11 @@ class Request
                 'Accept' => 'application/json',
                 'Authorization' => "Bearer $tokenOrTestClient",
             ];
-            $this->__allRoutes = require_once 'routes.php';
             $this->__client = new Client(['headers' => $headers]);
         } else {
             $this->__client = $tokenOrTestClient;
         }
+        $this->__allRoutes = require_once 'routes.php';
     }
 
     /**
