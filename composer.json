@@ -17,7 +17,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Beaver\\PowerBI\\Tests": "tests/"
+            "Beaver\\PowerBI\\Tests\\": "tests/"
         }
     },
     "license": "MIT",
