@@ -2,7 +2,7 @@
 
 namespace Beaver\PowerBI\Tests;
 
-use Beaver\PowerBI\Resources\DataSet\Dataset;
+use Beaver\PowerBI\Resources\DataSet\DataSet;
 use Beaver\PowerBI\Resources\DataSet\Table;
 use Beaver\PowerBI\Resources\DataSet\Type;
 use PHPUnit\Framework\TestCase;
@@ -23,7 +23,7 @@ class DataSetTest extends TestCase
      */
     public function setUp(): void
     {
-        $this->__dataSet = Dataset::create('testing');
+        $this->__dataSet = DataSet::create('testing');
     }
 
     public function testAddingTables()
