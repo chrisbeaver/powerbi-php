@@ -4,6 +4,8 @@
 
 ## Usage
 
+Trigger Build
+
 1. To prepare a dataset on PowerBI, use the Resources provided to design the dataset and tables.
 
 `$dataSet = Beaver\PowerBI\Resources\DataSet\DataSet::create('Testing Database from API');`
