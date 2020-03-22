@@ -55,6 +55,16 @@ class Table implements \JsonSerializable
     }
 
     /**
+     * Returns the array of columns.
+     *
+     * @return  array
+     */
+    public function getColumns()
+    {
+        return $this->__columns;
+    }
+
+    /**
      * Convert the object into something JSON serializable.
      *
      * @return array

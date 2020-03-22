@@ -56,6 +56,16 @@ class DataSet implements \JsonSerializable
     }
 
     /**
+     * Return the array of tables on the dataset.
+     *
+     * @return  array
+     */
+    public function getTables()
+    {
+        return $this->__tables;
+    }
+
+    /**
      * Convert the object into something JSON serializable.
      *
      * @return array
