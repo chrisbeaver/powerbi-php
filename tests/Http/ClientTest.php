@@ -33,5 +33,4 @@ class ClientTest extends TestCase
 
         $this->assertEquals('ABCDEFG', $client->token());
     }
-
 }
