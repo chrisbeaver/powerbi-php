@@ -1,5 +1,7 @@
 # powerbi-php
 
+[![Build Status](https://travis-ci.com/chrisbeaver/powerbi-php.svg?token=6sNEGutzUeKZiHnqpERv&branch=master)](https://travis-ci.com/chrisbeaver/powerbi-php)
+
 ## Usage
 
 1. To prepare a dataset on PowerBI, use the Resources provided to design the dataset and tables.
