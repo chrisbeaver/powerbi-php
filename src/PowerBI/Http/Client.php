@@ -45,7 +45,7 @@ class Client
      * @param  string  $password
      * @return void
      */
-    public function __construct($client_id, $client_secret, $username, $password)
+    public function __construct($client_id, $client_secret, $username, $password, $httpClient = null)
     {
         $formData = [
             'grant_type' => 'password',
@@ -56,8 +56,8 @@ class Client
             'password' => $password,
         ];
 
-        $guzzle = new Guzzle;
-        $response = $guzzle->post($this->__url, [
+        $httpClient = $httpClient ?? new Guzzle;
+        $response = $httpClient->post($this->__url, [
             'form_params' => $formData,
         ]);
 
