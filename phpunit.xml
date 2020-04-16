@@ -11,7 +11,7 @@
          verbose="true"
         >
     <testsuites>
-        <testsuite name="PowerBI AP Wrapper Test Suite">
+        <testsuite name="PowerBI API Wrapper Test Suite">
             <directory suffix=".php">./tests/</directory>
         </testsuite>
     </testsuites>

@@ -105,4 +105,21 @@ class Client
 
         return $this->__dataSet;
     }
+
+    /**
+     * Returns class to chain methods off of for manipulating a group.
+     *
+     * @return Beaver\PowerBI\Http\Group
+     */
+    public function group($testingHttpClient = null)
+    {
+        if ($this->__dataSet) {
+            return $this->__dataSet;
+        }
+        $this->__dataSet = $testingHttpClient ?
+        new Group($testingHttpClient) :
+        new Group($this->token());
+
+        return $this->__dataSet;
+    }
 }

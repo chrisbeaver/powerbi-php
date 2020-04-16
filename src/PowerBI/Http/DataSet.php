@@ -38,6 +38,18 @@ class DataSet extends Request
     }
 
     /**
+     * Submit request to create a new dataset.
+     *
+     * @param  Dataset  $dataSet
+     * @return mixed
+     */
+    public function createInGroup(Database $dataSet, $groupID)
+    {
+        $url = sprintf($this->__routes['createInGroup'], $groupID);
+        return $this->_post($url, $dataSet);
+    }
+
+    /**
      * Submit request to delete given dataset.
      *
      * @param  string  $dataSetID
@@ -71,6 +83,12 @@ class DataSet extends Request
     public function addRows($dataSetID, $tableName, array $rows)
     {
         $url = sprintf($this->__routes['addRows'], $dataSetID, $tableName);
+        return $this->_post($url, $rows);
+    }
+
+    public function addRowsInGroup($groupID, $dataSetID, $tableName, array $rows)
+    {
+        $url = sprintf($this->__routes['addRowsInGroup'], $groupID, $dataSetID, $tableName);
         return $this->_post($url, $rows);
     }
 }
