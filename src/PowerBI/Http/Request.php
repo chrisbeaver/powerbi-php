@@ -56,7 +56,7 @@ class Request
             var_dump($e->getResponse()->getBody()->getContents());
         }
 
-        return json_decode($response->getBody()->getContents(), true);
+        return $response;
     }
 
     /**
